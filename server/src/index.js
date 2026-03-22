@@ -13,12 +13,20 @@ connectDB()
 
 // middleware
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://eco-wood-industries.vercel.app',
-    'https://www.ecowoodindustries.in',
-    'https://ecowoodindustries.in',
-  ],
+  origin: (origin, callback) => {
+    // allow requests with no origin (mobile apps, curl, etc.) and all vercel/custom domains
+    const allowed = [
+      'http://localhost:3000',
+      'https://eco-wood-industries.vercel.app',
+      'https://www.ecowoodindustries.in',
+      'https://ecowoodindustries.in',
+    ]
+    if (!origin || allowed.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true)
+    } else {
+      callback(null, true) // allow all for now — tighten after go-live
+    }
+  },
   credentials: true,
 }))
 app.use(express.json())
