@@ -186,7 +186,7 @@ export default function BuyWood() {
             <label className="block text-sm font-semibold text-gray-700 mb-1">Distance / Location <span className="text-red-500">*</span></label>
             <input
               type="text" name="distance" value={form.distance} onChange={handleChange}
-              placeholder="e.g. 25 km from Pune, Maharashtra"
+              placeholder="e.g. Address - 25 km from Pune, Maharashtra"
               className={`w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition ${errors.distance ? 'border-red-400' : 'border-gray-200'}`}
             />
             <p className="text-gray-400 text-xs mt-1">Enter your approximate distance or city/area from us.</p>
