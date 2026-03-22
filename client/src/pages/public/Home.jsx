@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import Layout from '../../components/layout/Layout'
 
 const taglines = [
@@ -107,12 +108,12 @@ function HeroSlider() {
           </svg>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/services" className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-500 transition-colors duration-300">
+          <Link to="/services" className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-500 transition-colors duration-300">
             Explore Services
-          </a>
-          <a href="/buy-wood" className="bg-white text-green-800 px-8 py-3 rounded-lg font-semibold border-2 border-white hover:bg-transparent hover:text-white transition-all duration-300 tracking-wide shadow-lg">
+          </Link>
+          <Link to="/buy-wood" className="bg-white text-green-800 px-8 py-3 rounded-lg font-semibold border-2 border-white hover:bg-transparent hover:text-white transition-all duration-300 tracking-wide shadow-lg">
             🪵 Sell Scrap Wood
-          </a>
+          </Link>
         </div>
       </div>
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">

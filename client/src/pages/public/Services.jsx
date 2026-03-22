@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import Layout from '../../components/layout/Layout'
 
 const fadeUp = {
@@ -115,10 +116,10 @@ export default function Services() {
         <p className="text-gray-500 mb-8 max-w-md mx-auto">
           Eco Wood Industries is ready to help. Let's turn your waste into value — together.
         </p>
-        <a href="/how-it-works"
+        <Link to="/how-it-works"
           className="inline-block bg-green-700 text-white px-10 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors duration-300 shadow-lg">
           See How It Works →
-        </a>
+        </Link>
       </motion.section>
     </Layout>
   )
