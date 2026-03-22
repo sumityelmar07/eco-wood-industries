@@ -84,20 +84,26 @@ export default function BuyWood() {
     setGeoPhoto(null)
 
     if (!navigator.geolocation) {
-      // no geolocation support — use photo as-is
       setGeoPhoto(file)
       setGeoStatus('error')
       return
     }
 
+    // manual timeout — if geolocation takes > 6s, use photo without stamp
+    const timer = setTimeout(() => {
+      setGeoPhoto(file)
+      setGeoStatus('error')
+    }, 6000)
+
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
+        clearTimeout(timer)
         const stamped = await stampGeoOnImage(file, pos.coords)
         setGeoPhoto(stamped)
         setGeoStatus('done')
       },
       () => {
-        // user denied location — use photo without stamp
+        clearTimeout(timer)
         setGeoPhoto(file)
         setGeoStatus('error')
       },
