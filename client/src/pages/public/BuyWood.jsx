@@ -101,7 +101,7 @@ export default function BuyWood() {
         setGeoPhoto(file)
         setGeoStatus('error')
       },
-      { enableHighAccuracy: true, timeout: 10000 }
+      { enableHighAccuracy: false, timeout: 5000, maximumAge: 60000 }
     )
   }
 
