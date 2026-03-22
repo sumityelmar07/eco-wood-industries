@@ -1,3 +1,6 @@
+# Private documents — never push to GitHub
+HANDOVER_GUIDE.md
+
 # Dependencies
 node_modules/
 */node_modules/
