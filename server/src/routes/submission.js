@@ -20,10 +20,10 @@ router.post('/', (req, res) => {
     }
 
     try {
-      const { name, email, distance } = req.body
+      const { name, email, mobile, distance } = req.body
 
-      if (!name || !email || !distance) {
-        return res.status(400).json({ error: 'Name, email and distance are required' })
+      if (!name || !email || !mobile || !distance) {
+        return res.status(400).json({ error: 'Name, email, mobile and distance are required' })
       }
 
       // collect uploaded image URLs from Cloudinary
@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 
       // save to MongoDB
       const submission = await Submission.create({
-        name, email, distance, woodPhotos, geoPhoto,
+        name, email, mobile, distance, woodPhotos, geoPhoto,
       })
 
       // build email HTML
@@ -61,7 +61,8 @@ router.post('/', (req, res) => {
               <table style="width:100%;border-collapse:collapse;">
                 <tr><td style="padding:8px;color:#555;font-weight:bold;">Name</td><td style="padding:8px;">${name}</td></tr>
                 <tr style="background:#f9f9f9;"><td style="padding:8px;color:#555;font-weight:bold;">Email</td><td style="padding:8px;"><a href="mailto:${email}">${email}</a></td></tr>
-                <tr><td style="padding:8px;color:#555;font-weight:bold;">Distance / Location</td><td style="padding:8px;">${distance}</td></tr>
+                <tr><td style="padding:8px;color:#555;font-weight:bold;">Mobile</td><td style="padding:8px;">${mobile}</td></tr>
+                <tr style="background:#f9f9f9;"><td style="padding:8px;color:#555;font-weight:bold;">Distance / Location</td><td style="padding:8px;">${distance}</td></tr>
                 <tr style="background:#f9f9f9;"><td style="padding:8px;color:#555;font-weight:bold;">Submitted At</td><td style="padding:8px;">${new Date().toLocaleString('en-IN')}</td></tr>
               </table>
               <hr style="margin:20px 0;border:none;border-top:1px solid #eee;" />

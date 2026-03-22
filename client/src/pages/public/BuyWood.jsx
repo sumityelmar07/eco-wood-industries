@@ -8,7 +8,7 @@ const fadeUp = {
 }
 
 export default function BuyWood() {
-  const [form, setForm] = useState({ name: '', email: '', distance: '' })
+  const [form, setForm] = useState({ name: '', email: '', mobile: '', distance: '' })
   const [woodPhotos, setWoodPhotos] = useState([])
   const [geoPhoto, setGeoPhoto] = useState(null)
   const [submitted, setSubmitted] = useState(false)
@@ -23,6 +23,7 @@ export default function BuyWood() {
     const e = {}
     if (!form.name.trim()) e.name = 'Name is required'
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Valid email is required'
+    if (!form.mobile.trim() || !/^[6-9]\d{9}$/.test(form.mobile)) e.mobile = 'Valid 10-digit mobile number is required'
     if (!form.distance.trim()) e.distance = 'Distance / location is required'
     if (woodPhotos.length === 0) e.woodPhotos = 'Please upload at least one wood photo'
     return e
@@ -56,6 +57,7 @@ export default function BuyWood() {
       const formData = new FormData()
       formData.append('name', form.name)
       formData.append('email', form.email)
+      formData.append('mobile', form.mobile)
       formData.append('distance', form.distance)
       woodPhotos.forEach(file => formData.append('woodPhotos', file))
       if (geoPhoto) formData.append('geoPhoto', geoPhoto)
@@ -167,8 +169,20 @@ export default function BuyWood() {
             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
           </motion.div>
 
-          {/* Distance / Location */}
+          {/* Mobile */}
           <motion.div variants={fadeUp} custom={2}>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">Mobile Number <span className="text-red-500">*</span></label>
+            <input
+              type="tel" name="mobile" value={form.mobile} onChange={handleChange}
+              placeholder="e.g. 9876543210"
+              maxLength={10}
+              className={`w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition ${errors.mobile ? 'border-red-400' : 'border-gray-200'}`}
+            />
+            {errors.mobile && <p className="text-red-500 text-xs mt-1">{errors.mobile}</p>}
+          </motion.div>
+
+          {/* Distance / Location */}
+          <motion.div variants={fadeUp} custom={3}>
             <label className="block text-sm font-semibold text-gray-700 mb-1">Distance / Location <span className="text-red-500">*</span></label>
             <input
               type="text" name="distance" value={form.distance} onChange={handleChange}
