@@ -64,7 +64,7 @@ router.post('/', (req, res) => {
                 <tr style="background:#f9f9f9;"><td style="padding:8px;color:#555;font-weight:bold;">Email</td><td style="padding:8px;"><a href="mailto:${email}">${email}</a></td></tr>
                 <tr><td style="padding:8px;color:#555;font-weight:bold;">Mobile</td><td style="padding:8px;">${mobile}</td></tr>
                 <tr style="background:#f9f9f9;"><td style="padding:8px;color:#555;font-weight:bold;">Distance / Location</td><td style="padding:8px;">${distance}</td></tr>
-                <tr style="background:#f9f9f9;"><td style="padding:8px;color:#555;font-weight:bold;">Submitted At</td><td style="padding:8px;">${new Date().toLocaleString('en-IN')}</td></tr>
+                <tr style="background:#f9f9f9;"><td style="padding:8px;color:#555;font-weight:bold;">Submitted At</td><td style="padding:8px;">${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST</td></tr>
               </table>
               <hr style="margin:20px 0;border:none;border-top:1px solid #eee;" />
               <h3 style="color:#166534;">📸 Scrap Wood Photos</h3>
