@@ -2,7 +2,9 @@ const express = require('express')
 const router = express.Router()
 const { upload } = require('../config/cloudinary')
 const Submission = require('../models/Submission')
-const transporter = require('../config/mailer')
+const { Resend } = require('resend')
+
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 // multer fields: woodPhotos (multiple) + geoPhoto (single)
 const uploadFields = upload.fields([
@@ -44,8 +46,9 @@ router.post('/', (req, res) => {
            <a href="${geoPhoto}"><img src="${geoPhoto}" width="300" style="border-radius:8px;margin-top:6px;" /></a></p>`
         : '<p>No geo-tagged photo provided.</p>'
 
-      const mailOptions = {
-        from: `"Eco Wood Industries" <${process.env.GMAIL_USER}>`,
+      // attempt email via Resend — non-blocking
+      resend.emails.send({
+        from: 'Eco Wood Industries <onboarding@resend.dev>',
         to: process.env.FOUNDER_EMAIL,
         subject: `📦 New Scrap Wood Submission from ${name}`,
         html: `
@@ -72,12 +75,7 @@ router.post('/', (req, res) => {
             </div>
           </div>
         `,
-      }
-
-      // attempt email — non-blocking, won't crash submission if it fails
-      transporter.sendMail(mailOptions).catch(err => {
-        console.warn('Email send failed (non-fatal):', err.message)
-      })
+      }).catch(err => console.warn('Resend email failed (non-fatal):', err.message))
 
       res.status(201).json({
         success: true,
