@@ -25,7 +25,6 @@ export default function BuyWood() {
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Valid email is required'
     if (!form.distance.trim()) e.distance = 'Distance / location is required'
     if (woodPhotos.length === 0) e.woodPhotos = 'Please upload at least one wood photo'
-    if (!geoPhoto) e.geoPhoto = 'Please upload a geo-tagged photo'
     return e
   }
 
@@ -61,7 +60,7 @@ export default function BuyWood() {
       woodPhotos.forEach(file => formData.append('woodPhotos', file))
       if (geoPhoto) formData.append('geoPhoto', geoPhoto)
 
-      const apiUrl = import.meta.env.VITE_API_URL || ''
+      const apiUrl = 'https://eco-wood-server.onrender.com'
       const res = await fetch(`${apiUrl}/api/submit`, {
         method: 'POST',
         body: formData,
@@ -188,7 +187,7 @@ export default function BuyWood() {
 
           {/* Geo-tagged Photo */}
           <motion.div variants={fadeUp} custom={4}>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">Geo-Tagged Photo of Product / Wood</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">Geo-Tagged Photo of Product / Wood <span className="text-gray-400 font-normal">(optional)</span></label>
             <div
               onClick={() => geoInputRef.current.click()}
               className={`w-full border-2 border-dashed rounded-xl px-4 py-6 text-center cursor-pointer hover:border-amber-400 hover:bg-amber-50 transition ${errors.geoPhoto ? 'border-red-400' : 'border-gray-200'}`}
