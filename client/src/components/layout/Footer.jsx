@@ -63,7 +63,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-green-700 mt-10 pt-5 text-center text-xs text-green-500">
-        © 2025 Eco Wood Industries. All rights reserved. &nbsp;|&nbsp; Designed with 🌿 for a sustainable future.
+        © 2026 Eco Wood Industries. All rights reserved. &nbsp;|&nbsp; Designed with 🌿 for a sustainable future.
       </div>
     </footer>
   )
