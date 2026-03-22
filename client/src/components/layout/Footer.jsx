@@ -52,7 +52,7 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-bold mb-3 uppercase tracking-widest text-xs">Our Office</h4>
           <p className="text-sm leading-relaxed">
-            FL No. 204, A Wing, Paraiso-1,<br />
+            Office No. 204, A Wing, Paraiso-1,<br />
             Moshi Alandi BRT Road,<br />
             Moshi - 412105
           </p>
