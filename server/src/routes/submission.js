@@ -74,11 +74,14 @@ router.post('/', (req, res) => {
         `,
       }
 
-      await transporter.sendMail(mailOptions)
+      // attempt email — non-blocking, won't crash submission if it fails
+      transporter.sendMail(mailOptions).catch(err => {
+        console.warn('Email send failed (non-fatal):', err.message)
+      })
 
       res.status(201).json({
         success: true,
-        message: 'Submission received. Email sent to founder.',
+        message: 'Submission received.',
         id: submission._id,
       })
 
