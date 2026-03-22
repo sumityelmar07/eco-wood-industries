@@ -115,6 +115,29 @@ export default function BuyWood() {
         </motion.p>
       </div>
 
+      {/* Collection Policy Info */}
+      <section className="max-w-2xl mx-auto px-6 pt-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+        >
+          <div className="flex items-start gap-4 bg-green-50 border border-green-200 rounded-2xl p-5">
+            <span className="text-3xl">🚛</span>
+            <div>
+              <p className="font-bold text-green-800 text-sm">1 Tonne or More</p>
+              <p className="text-gray-600 text-xs mt-1">We will collect the scrap wood directly from your location — no hassle, no transport cost.</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-4 bg-amber-50 border border-amber-200 rounded-2xl p-5">
+            <span className="text-3xl">📦</span>
+            <div>
+              <p className="font-bold text-amber-800 text-sm">Below 1 Tonne</p>
+              <p className="text-gray-600 text-xs mt-1">You will need to deliver the scrap wood to our facility at Moshi, Pune - 412105.</p>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
       {/* Form */}
       <section className="max-w-2xl mx-auto px-6 py-14">
         <motion.form
