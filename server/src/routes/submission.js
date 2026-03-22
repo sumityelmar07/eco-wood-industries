@@ -29,6 +29,7 @@ router.post('/', (req, res) => {
       // collect uploaded image URLs from Cloudinary
       const woodPhotos = (req.files?.woodPhotos || []).map(f => f.path)
       const geoPhoto = req.files?.geoPhoto?.[0]?.path || null
+      console.log('geoPhoto received:', geoPhoto, '| files keys:', Object.keys(req.files || {}))
 
       // save to MongoDB
       const submission = await Submission.create({

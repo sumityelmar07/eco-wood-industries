@@ -12,7 +12,7 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: 'eco-wood-submissions',
-    allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
+    resource_type: 'image',
   },
 })
 
