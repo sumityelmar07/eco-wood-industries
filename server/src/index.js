@@ -18,6 +18,7 @@ app.use(cors({
     const allowed = [
       'http://localhost:3000',
       'https://eco-wood-industries.vercel.app',
+      'https://ecowood-web-psi.vercel.app',
       'https://www.ecowoodindustries.in',
       'https://ecowoodindustries.in',
     ]
