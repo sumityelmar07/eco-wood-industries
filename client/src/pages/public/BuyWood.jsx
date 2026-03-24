@@ -128,7 +128,7 @@ export default function BuyWood() {
       woodPhotos.forEach(file => formData.append('woodPhotos', file))
       if (geoPhoto) formData.append('geoPhoto', geoPhoto)
 
-      const res = await fetch('https://eco-wood-server.onrender.com/api/submit', {
+      const res = await fetch('https://ecowood-web.onrender.com/api/submit', {
         method: 'POST',
         body: formData,
       })

@@ -63,6 +63,13 @@ app.use('/api/submit', submissionRoute)
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`)
+
+  // self-ping every 14 min to prevent Render free tier sleep
+  setInterval(() => {
+    fetch('https://ecowood-web.onrender.com/api/health')
+      .then(() => console.log('Self-ping OK'))
+      .catch(err => console.warn('Self-ping failed:', err.message))
+  }, 14 * 60 * 1000)
 })
 
 module.exports = app
