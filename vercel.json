@@ -3,7 +3,7 @@
   "outputDirectory": "client/dist",
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!google56a6989e9955620d.html|sitemap.xml|favicon.svg).*)",
       "destination": "/index.html"
     }
   ]
