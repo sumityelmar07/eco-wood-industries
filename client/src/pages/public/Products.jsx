@@ -319,7 +319,7 @@ const productCategories = [
     products: [
       {
         name: 'Heavy Duty Wooden Boxes',
-        image: '/images/Product%20images/Woodden Box Pakaging.png',
+        image: '/images/Product%20images/Heavy%20duty%20wooden%20boxes.png',
         features: [
           { icon: '🔨', text: 'Extra Strong Construction for Heavy & Oversized Goods' },
           { icon: '💪', text: 'Reinforced Design Ensures Superior Load-Bearing Capacity' },
@@ -329,7 +329,7 @@ const productCategories = [
       },
       {
         name: 'ISPM-15 Pine Wood Boxes',
-        image: '/images/Product%20images/Woodden Box Pakaging.png',
+        image: '/images/Product%20images/ISPM%2015.png',
         features: [
           { icon: '🌲', text: 'ISPM-15 Heat Treated & Certified' },
           { icon: '✅', text: 'Protects from Pests, Fungus & Contamination' },
@@ -339,7 +339,7 @@ const productCategories = [
       },
       {
         name: 'Plywood Boxes',
-        image: '/images/Product%20images/Woodden Box Pakaging.png',
+        image: '/images/Product%20images/PlY%20wood%20boxes.png',
         features: [
           { icon: '🌳', text: 'Made from High-Quality Plywood' },
           { icon: '💧', text: 'Moisture Resistant for Extra Protection' },
@@ -349,7 +349,7 @@ const productCategories = [
       },
       {
         name: 'Euro Pallets',
-        image: '/images/Product%20images/Woodden Box Pakaging.png',
+        image: '/images/Product%20images/Ero%20pallets.png',
         features: [
           { icon: '🌍', text: 'Manufactured to International EPAL Standards' },
           { icon: '🔄', text: '4-Way Entry for Easy Handling' },
@@ -379,7 +379,7 @@ const productCategories = [
       },
       {
         name: 'Recycled Wooden Planks',
-        image: '/images/Product%20images/Recycle wood Boards.png',
+        image: '/images/Product%20images/Recycle%20woodden%20planks.png',
         features: [
           { icon: '🌲', text: 'Sustainably Sourced from Premium Reclaimed Lumber' },
           { icon: '✅', text: 'ISPM-15 Compliant, Secure & Stackable' },
