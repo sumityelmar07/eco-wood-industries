@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ecowoodindustries.in/</loc>
+    <loc>https://www.ecowoodindustries.in/</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
+    <lastmod>2026-07-07</lastmod>
   </url>
   <url>
-    <loc>https://ecowoodindustries.in/about</loc>
+    <loc>https://www.ecowoodindustries.in/about</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-07-07</lastmod>
   </url>
   <url>
-    <loc>https://ecowoodindustries.in/services</loc>
-    <priority>0.8</priority>
+    <loc>https://www.ecowoodindustries.in/services</loc>
+    <priority>0.9</priority>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-07-07</lastmod>
   </url>
   <url>
-    <loc>https://ecowoodindustries.in/how-it-works</loc>
+    <loc>https://www.ecowoodindustries.in/products</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://www.ecowoodindustries.in/how-it-works</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-07-07</lastmod>
   </url>
   <url>
-    <loc>https://ecowoodindustries.in/buy-wood</loc>
-    <priority>0.9</priority>
+    <loc>https://www.ecowoodindustries.in/buy-wood</loc>
+    <priority>1.0</priority>
     <changefreq>weekly</changefreq>
+    <lastmod>2026-07-07</lastmod>
   </url>
 </urlset>

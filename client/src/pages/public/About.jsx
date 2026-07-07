@@ -190,6 +190,77 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Google Map */}
+      <section className="py-16 px-6 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+            className="text-center mb-10"
+          >
+            <p className="text-green-600 uppercase tracking-widest text-xs font-bold mb-2">Find Us</p>
+            <h2 className="text-3xl font-extrabold text-gray-800">Our Location</h2>
+            <div className="w-12 h-1 bg-green-500 rounded mx-auto mt-4 mb-4" />
+            <p className="text-gray-500 text-sm">
+              Office No. 204, A Wing, Paraiso-1, Moshi Alandi BRT Road, Moshi – 412105
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="rounded-2xl overflow-hidden shadow-xl border-4 border-green-100"
+          >
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Office+No+204+A+Wing+Paraiso+1+Moshi+Alandi+BRT+Road+Moshi+Maharashtra+412105"
+              target="_blank"
+              rel="noreferrer"
+              className="block"
+            >
+              <iframe
+                title="Eco Wood Industries Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3779.123456789!2d73.8567!3d18.6820!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDQwJzU1LjIiTiA3M8KwNTEnMjQuMSJF!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin&q=Office+No+204+A+Wing+Paraiso+1+Moshi+Alandi+BRT+Road+Moshi+412105"
+                width="100%"
+                height="450"
+                style={{ border: 0, pointerEvents: 'none' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </a>
+          </motion.div>
+
+          {/* Address card below map */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="mt-6 bg-white rounded-2xl shadow-sm border border-green-100 p-6 flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-green-100 rounded-full p-3 text-2xl">📍</div>
+              <div>
+                <p className="font-bold text-green-800 text-base">Eco Wood Industries</p>
+                <p className="text-gray-500 text-sm mt-1">
+                  Office No. 204, A Wing, Paraiso-1,<br />
+                  Moshi Alandi BRT Road, Moshi – 412105
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Office+No+204+A+Wing+Paraiso+1+Moshi+Alandi+BRT+Road+Moshi+Maharashtra+412105"
+              target="_blank"
+              rel="noreferrer"
+              className="flex-shrink-0 bg-green-700 hover:bg-green-600 text-white px-6 py-2.5 rounded-lg font-semibold text-sm transition-colors duration-300"
+            >
+              Open in Google Maps →
+            </a>
+          </motion.div>
+        </div>
+      </section>
     </Layout>
   )
 }
