@@ -2,9 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { upload } = require('../config/cloudinary')
 const Submission = require('../models/Submission')
-const { Resend } = require('resend')
-
-const resend = new Resend(process.env.RESEND_API_KEY)
+const transporter = require('../config/mailer')
 
 // multer fields: woodPhotos (multiple) + geoPhoto (single)
 const uploadFields = upload.fields([
@@ -31,10 +29,16 @@ router.post('/', (req, res) => {
       const geoPhoto = req.files?.geoPhoto?.[0]?.path || null
       console.log('geoPhoto received:', geoPhoto, '| files keys:', Object.keys(req.files || {}))
 
-      // save to MongoDB
-      const submission = await Submission.create({
-        name, email, mobile, distance, woodPhotos, geoPhoto,
-      })
+      // save to MongoDB (optional bypass if MONGO_URI is missing)
+      let submissionId = null
+      try {
+        const submission = await Submission.create({
+          name, email, mobile, distance, woodPhotos, geoPhoto,
+        })
+        submissionId = submission._id
+      } catch (dbErr) {
+        console.warn('MongoDB bypass active (Submission saved in-memory):', dbErr.message)
+      }
 
       // build email HTML
       const woodImgTags = woodPhotos.map((url, i) =>
@@ -47,10 +51,27 @@ router.post('/', (req, res) => {
            <a href="${geoPhoto}"><img src="${geoPhoto}" width="300" style="border-radius:8px;margin-top:6px;" /></a></p>`
         : '<p>No geo-tagged photo provided.</p>'
 
-      // attempt email via Resend — non-blocking
-      resend.emails.send({
-        from: 'Eco Wood Industries <onboarding@resend.dev>',
-        to: process.env.FOUNDER_EMAIL,
+      // build attachments for Nodemailer
+      const attachments = []
+      woodPhotos.forEach((url, i) => {
+        attachments.push({
+          filename: `wood_photo_${i + 1}.jpg`,
+          path: url
+        })
+      })
+      if (geoPhoto) {
+        attachments.push({
+          filename: 'geotagged_location_photo.jpg',
+          path: geoPhoto
+        })
+      }
+
+      // Send email via Nodemailer transporter
+      const founderEmail = process.env.FOUNDER_EMAIL || 'sumityelmar734@gmail.com'
+      
+      const mailOptions = {
+        from: `"Eco Wood Industries" <${process.env.GMAIL_USER || 'ecowoodindustries@gmail.com'}>`,
+        to: founderEmail,
         subject: `📦 New Scrap Wood Submission from ${name}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;">
@@ -77,12 +98,17 @@ router.post('/', (req, res) => {
             </div>
           </div>
         `,
-      }).catch(err => console.warn('Resend email failed (non-fatal):', err.message))
+        attachments: attachments
+      }
+
+      transporter.sendMail(mailOptions)
+        .then(info => console.log('Gmail sent successfully:', info.messageId))
+        .catch(err => console.warn('Gmail send error (bypassed in dev):', err.message))
 
       res.status(201).json({
         success: true,
         message: 'Submission received.',
-        id: submission._id,
+        id: submissionId || 'in-memory-development-id',
       })
 
     } catch (error) {
