@@ -4,6 +4,7 @@ require('dotenv').config()
 
 const connectDB = require('./config/db')
 const submissionRoute = require('./routes/submission')
+const enquiryRoute = require('./routes/enquiry')
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -59,7 +60,10 @@ app.get('/api/stats', (req, res) => {
   })
 })
 
+const path = require('path')
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')))
 app.use('/api/submit', submissionRoute)
+app.use('/api/enquiry', enquiryRoute)
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`)
